@@ -1,6 +1,6 @@
 import express, { json } from "express";
 import chalk from "chalk";
-import healthRouter from "../src/routes/health-routes";
+import healthRouter from "./routes/health-routes";
 
 import dotenv from "dotenv";
 dotenv.config();
