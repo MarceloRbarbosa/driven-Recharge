@@ -1,10 +1,14 @@
 import express, { json } from "express";
 import chalk from "chalk";
+import healthRouter from "../src/routes/health-routes";
+
 import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
 app.use(json());
+
+app.use(healthRouter);
 
 
 const port = process.env.PORT || 5000
