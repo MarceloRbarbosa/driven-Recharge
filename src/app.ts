@@ -1,15 +1,12 @@
-import express, { json } from "express";
+import express, { json} from "express";
 import chalk from "chalk";
-import healthRouter from "./routes/health-routes";
-
 import dotenv from "dotenv";
+import routers from "./routes/index-routers";
 dotenv.config();
 
 const app = express();
 app.use(json());
-
-app.use(healthRouter);
-
+app.use(routers);
 
 const port = process.env.PORT || 5000
 app.listen(port, () =>{
