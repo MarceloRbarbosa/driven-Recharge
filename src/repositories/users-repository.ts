@@ -31,11 +31,11 @@ async function findUserById(id:Number) {
 }
 
 
-const repository = {
+const userRepository = {
     createNewUser,
     findAllUsers,
     findUserByDocument,
     findUserById
 }
 
-export default repository;
+export default userRepository;
