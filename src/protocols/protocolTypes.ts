@@ -30,3 +30,7 @@ export type Recharge = {
     amount: number,
     created_at: Date;
 }
+
+export type CustomError = {
+    type?: string;
+}
