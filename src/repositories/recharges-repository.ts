@@ -16,6 +16,13 @@ async function findAllRecharge() {
     return recharges.rows
 }
 
+async function findRechargeById(id:number) {
+    const recharge = await connection.query<Recharge>(`
+        SELECT * FROM recharge WHERE id= $1
+        `,[id])
+        return recharge.rows[0]
+}
+
 async function findRechargeByPhone(phone_number: Number) {
     const recharge = await connection.query<Recharge>(`
         SELECT * FROM recharge WHERE phone_number = $1
@@ -26,6 +33,7 @@ async function findRechargeByPhone(phone_number: Number) {
 const rechargeRepository = {
     CreaterNewRecharge,
     findAllRecharge,
+    findRechargeById,
     findRechargeByPhone
 }
 
