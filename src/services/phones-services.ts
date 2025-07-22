@@ -1,6 +1,6 @@
 import phoneRepository from "../repositories/phones-repository";
-import { PhonesData } from "protocols/protocolTypes";
+import { CreatePhone } from "protocols/protocolTypes";
 
-export async function createPhone(phoneData:PhonesData) {
+export async function createPhone(phoneData:CreatePhone) {
    
 }

@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { PhonesData } from "protocols/protocolTypes";
+import { CreatePhone } from "protocols/protocolTypes";
 
 async function insertNewPhone(req:Request, res: Response) {
-    const phoneData = req.body as PhonesData;
+    const phoneData = req.body as CreatePhone;
     res.sendStatus(201)
 }
 
