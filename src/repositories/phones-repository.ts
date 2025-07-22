@@ -25,14 +25,14 @@ async function findPhonesById(id:Number) {
         return phone.rows[0]
 }
 
-async function findPhoneByNumber(phone_number:String) {
+async function findPhoneByNumber(phone_number:string) {
     const phone = await connection.query<Phone>(`
         SLECT * FROM phones WHERE phone_number = $1
         `, [phone_number]);
         return phone.rows[0]
 }
 
-async function deletePhoneNumber(id:Number) {
+async function deletePhoneNumber(id:number) {
     await connection.query<Phone>(`DELETE FROM phones WHERE id =$1`,[id])
 }
 

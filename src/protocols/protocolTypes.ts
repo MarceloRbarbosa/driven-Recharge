@@ -21,6 +21,7 @@ export type User = {
     id: number,
     document: string,
     name: string;
+    phones: Phone[]
 }
 
 export type Recharge = {

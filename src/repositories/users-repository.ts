@@ -1,5 +1,5 @@
 import connection from "config/database";
-import { CreateUser, User } from "protocols/protocolTypes";
+import { CreateUser, User, Phone } from "protocols/protocolTypes";
 
 async function createNewUser(userData:CreateUser) {
     const { document, name } = userData;
@@ -12,8 +12,17 @@ async function createNewUser(userData:CreateUser) {
 }
 
 async function findAllUsers() {
-    const users = await connection.query<User>(`SELECT * FROM users`)
-    return users.rows
+    const result = await connection.query<User>(`SELECT * FROM users`)
+    const users = result.rows;
+
+    for(const user of users) {
+        const result = await connection.query<Phone>(`
+            SELECT * FROM phones WHERE user_id = $1
+            `, [user.id]);
+        user.phones= result.rows
+    }
+
+    return users
 }
 
 async function findUserByDocument(document:String) {
@@ -23,7 +32,7 @@ async function findUserByDocument(document:String) {
         return user.rows[0];
 }
 
-async function findUserById(id:Number) {
+async function findUserById(id:number) {
     const user = await connection.query<User>(`
         SELECT * FROM users WHERE id = $1
         `,[id])
