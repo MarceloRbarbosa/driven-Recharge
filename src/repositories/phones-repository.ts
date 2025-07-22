@@ -11,14 +11,11 @@ async function insertNewPhone(phoneData:PhonesData) {
         `,[phone_number, carrier_id, user_id, description])
 
     return result.rows[0];
-    
-
-    
 }
 
 
-const phoneRepositoy = {
+const phoneRepository = {
     insertNewPhone
 }
 
-export default phoneRepositoy;
+export default phoneRepository;
