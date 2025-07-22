@@ -13,9 +13,35 @@ async function insertNewPhone(phoneData:CreatePhone) {
     return result.rows[0];
 }
 
+async function findAllPhones() {
+    const phones = await connection.query<Phone>(`SELECT * FROM phones`)
+    return phones.rows;
+}
+
+async function findPhonesById(id:Number) {
+    const phone = await connection.query<Phone>(`
+        SELECT * FROM phones WHERE id = $1
+        `,[id]);
+        return phone.rows[0]
+}
+
+async function findPhoneByNumber(phone_number:String) {
+    const phone = await connection.query<Phone>(`
+        SLECT * FROM phones WHERE phone_number = $1
+        `, [phone_number]);
+        return phone.rows[0]
+}
+
+async function deletePhoneNumber(id:Number) {
+    await connection.query<Phone>(`DELETE FROM phones WHERE id =$1`,[id])
+}
 
 const phoneRepository = {
-    insertNewPhone
+    insertNewPhone,
+    findAllPhones,
+    findPhonesById,
+    findPhoneByNumber,
+    deletePhoneNumber
 }
 
 export default phoneRepository;
