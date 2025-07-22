@@ -14,13 +14,27 @@ import userRepository from "repositories/users-repository";
    if(result.phones.length > 3){
        throw { type: "conflict", message: "Este usuário já atingiu o limite maximo de números cadastrados "}
     }
-    
+
+    const existingUser = await userRepository.findUserById(userData.id);
+    if(!existingUser) {
+        throw { type: "NOT_FOUND", message: "Usuário não cadastrado"}
+    }
+
     await phoneRepository.insertNewPhone(newPhone)
 }
 
 async function getPhoneService() {
     const phones = await phoneRepository.findAllPhones()
     return phones
+}
+
+async function getPhoneByDocumentService(documentData:string) {
+    const user = await userRepository.findUserByDocument(documentData)
+
+    if(!user){
+        throw { type: "NOT_FOUND", message: "Usuário não cadastrado"}
+    }
+    return user;
 }
 
 async function deletePhoneService(id:number) {
@@ -37,6 +51,7 @@ async function deletePhoneService(id:number) {
 const phonesService = {
     createPhoneService,
     getPhoneService,
+    getPhoneByDocumentService,
     deletePhoneService
 }
 
