@@ -1,6 +1,7 @@
 export type CreatePhone = Omit<Phone, "id">;
 export type CreateCarrier = Omit<Carrier, "id">;
 export type CreaterRecharge = Omit<Recharge, "id">;
+export type CreateUser = Omit<User, "id">; 
 
 export type Phone = {
     id: number,
