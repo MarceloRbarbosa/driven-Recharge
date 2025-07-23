@@ -34,7 +34,7 @@ async function findPhoneByNumber(phone_number:string) {
 
 async function findPhoneByDoc(doc:string) {
     const phone = await connection.query<PhoneByDoc>(`
-        SELECT users.id, users.document as document, phones.phone_number as phone_number
+        SELECT phones.phone_number as phone_number
         FROM users
         JOIN phones ON phones.user_id = users.id
         WHERE document = $1
