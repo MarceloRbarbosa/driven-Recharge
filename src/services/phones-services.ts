@@ -1,4 +1,4 @@
-import { CreatePhone, User } from "../protocols/protocolTypes";
+import { CreatePhone, Phone, User } from "../protocols/protocolTypes";
 import phoneRepository from "../repositories/phones-repository";
 import userRepository from "../repositories/users-repository";
 
@@ -27,12 +27,18 @@ async function getPhoneService() {
 }
 
 async function getPhoneByDocumentService(documentData:string) {
-    const user = await userRepository.findUserByDocument(documentData)
 
+    const user = await userRepository.findUserByDocument(documentData)
     if(!user){
         throw { type: "NOT_FOUND", message: "Usuário não cadastrado"}
     }
-    return user;
+    
+    const phoneResult = await phoneRepository.findPhoneByDoc(documentData);
+     if(!phoneResult) {
+        throw { type: "NOT_FOUND", message: "Telefone não cadastrado"}
+     }
+     
+     return phoneResult
 }
 
 async function deletePhoneService(id:number) {

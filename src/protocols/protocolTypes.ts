@@ -31,6 +31,12 @@ export type Recharge = {
     created_at: Date;
 }
 
+export type PhoneByDoc = {
+    id: number,
+    document: string,
+    number: Text
+}
+
 export type CustomError = {
     type?: string;
 }
