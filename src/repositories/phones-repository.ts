@@ -27,7 +27,7 @@ async function findPhonesById(id:Number) {
 
 async function findPhoneByNumber(phone_number:string) {
     const phone = await connection.query<Phone>(`
-        SLECT * FROM phones WHERE phone_number = $1
+        SELECT * FROM phones WHERE phone_number = $1
         `, [phone_number]);
         return phone.rows[0]
 }
