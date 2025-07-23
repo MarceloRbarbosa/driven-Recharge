@@ -7,6 +7,6 @@ import phoneSchema from "../schemas/phoneSchema";
 const phoneRouter = Router ();
 
 phoneRouter.post("/phones", validateSchema(phoneSchema),phoneControllers.insertNewPhone)
-phoneRouter.get("/:document", phoneControllers.getPhonesByDocument)
+phoneRouter.get("/phones/:document", phoneControllers.getPhonesByDocument)
 
 export default phoneRouter;
