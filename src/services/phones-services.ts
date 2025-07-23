@@ -1,4 +1,4 @@
-import { CreatePhone, Phone, User } from "../protocols/protocolTypes";
+import { CreatePhone } from "../protocols/protocolTypes";
 import phoneRepository from "../repositories/phones-repository";
 import userRepository from "../repositories/users-repository";
 
@@ -39,7 +39,6 @@ async function getPhoneByDocumentService(documentData:string) {
 
 async function deletePhoneService(id:number) {
    const phone = await phoneRepository.findPhonesById(id)
-
     if(!phone) {
         throw { type: "not_found", message: "Este telefone não existe"}
     }
