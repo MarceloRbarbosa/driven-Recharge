@@ -21,7 +21,6 @@ async function findAllUsers() {
             `, [user.id]);
         user.phones= result.rows
     }
-
     return users
 }
 
