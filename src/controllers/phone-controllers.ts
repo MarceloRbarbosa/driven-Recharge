@@ -7,7 +7,7 @@ import userRepository from "../repositories/users-repository";
 async function insertNewPhone(req:Request, res: Response) {
     const newPhone = req.body as CreatePhone;
     const userData = await userRepository.findUserById(newPhone.user_id)
-    await phonesService.createPhoneService(newPhone, userData)
+    await phonesService.createPhoneService(newPhone)
     res.status(httpStatus.CREATED).send("Telefone adicionado com sucesso")
 }
 
