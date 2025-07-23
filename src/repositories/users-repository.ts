@@ -1,4 +1,4 @@
-import connection from "config/database";
+import connection from "../config/database";
 import { CreateUser, User, Phone } from "protocols/protocolTypes";
 
 async function createNewUser(userData:CreateUser) {

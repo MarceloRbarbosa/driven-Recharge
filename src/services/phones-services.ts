@@ -1,6 +1,6 @@
-import { CreatePhone, User } from "protocols/protocolTypes";
+import { CreatePhone, User } from "../protocols/protocolTypes";
 import phoneRepository from "../repositories/phones-repository";
-import userRepository from "repositories/users-repository";
+import userRepository from "../repositories/users-repository";
 
 
 

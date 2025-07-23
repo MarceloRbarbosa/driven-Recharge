@@ -1,5 +1,5 @@
-import connection from "config/database";
-import { Phone, CreatePhone } from "protocols/protocolTypes";
+import connection from "../config/database";
+import { Phone, CreatePhone } from "../protocols/protocolTypes";
 
 
 async function insertNewPhone(phoneData:CreatePhone) {
