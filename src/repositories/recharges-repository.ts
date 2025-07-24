@@ -1,5 +1,5 @@
 import connection from "../config/database";
-import { CreaterRecharge, Recharge } from "protocols/protocolTypes";
+import { CreaterRecharge, Recharge, RechargeByNumber } from "protocols/protocolTypes";
 
 async function CreaterNewRecharge(rechargeData:CreaterRecharge) {
     const {phone_id, amount} = rechargeData;
@@ -23,11 +23,15 @@ async function findRechargeById(id:number) {
         return recharge.rows[0]
 }
 
-async function findRechargeByPhone(phone_number: Number) {
-    const recharge = await connection.query<Recharge>(`
-        SELECT * FROM recharge WHERE phone_number = $1
+async function findRechargeByPhone(phone_number: string) {
+    const recharge = await connection.query<RechargeByNumber>(`
+        SELECT recharge.id, phones.phone_number, recharge.amount as amount, recharge.created_at as date 
+        FROM recharge
+        JOIN phones ON phones.id = recharge.phone_id 
+        WHERE phone_number = $1
         `,[phone_number])
-        return recharge.rows[0]
+        console.log(recharge.rows)
+        return recharge.rows
 }
 
 const rechargeRepository = {

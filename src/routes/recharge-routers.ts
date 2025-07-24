@@ -6,4 +6,5 @@ import rechargeControllers from "../controllers/recharge-controllers";
 const rechargeRouter = Router();
 
 rechargeRouter.post("/recharges", validateSchema(rechargeSchema),rechargeControllers.insertNewRecharge)
+rechargeRouter.get("/recharges/:number", rechargeControllers.findRechargeByNumber)
 export default rechargeRouter;

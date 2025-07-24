@@ -34,6 +34,13 @@ export type Recharge = {
     created_at: Date;
 }
 
+export type RechargeByNumber = {
+    id: number,
+    phone_number: string,
+    amount: number,
+    date: Date;
+}
+
 export type PhoneByDoc = {
     id: number,
     document: string,
