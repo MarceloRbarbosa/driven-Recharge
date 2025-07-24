@@ -1,6 +1,6 @@
 import phoneRepository from "../repositories/phones-repository";
 import { CreaterRecharge } from "../protocols/protocolTypes";
-import rechargeRepository from "repositories/recharges-repository";
+import rechargeRepository from "../repositories/recharges-repository";
 
 
 async function createRechargeService(rechargeData:CreaterRecharge) {

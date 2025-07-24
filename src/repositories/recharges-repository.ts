@@ -1,13 +1,13 @@
-import connection from "config/database";
+import connection from "../config/database";
 import { CreaterRecharge, Recharge } from "protocols/protocolTypes";
 
 async function CreaterNewRecharge(rechargeData:CreaterRecharge) {
-    const {phone_id, amount, created_at} = rechargeData;
-    const result = await connection.query<CreaterRecharge>(`
-        INSERT INTO recharge (phone_id, amount, created_at)
-        VALUES ($1, $2, $3)
+    const {phone_id, amount} = rechargeData;
+    const result = await connection.query<Recharge>(`
+        INSERT INTO recharge (phone_id, amount)
+        VALUES ($1, $2)
         RETURNING *
-        `,[phone_id, amount, created_at])
+        `,[phone_id, amount])
         return result.rows[0]
 }
 
