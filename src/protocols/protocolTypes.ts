@@ -1,6 +1,5 @@
 export type CreatePhone = Omit<Phone, "id">;
 export type CreateCarrier = Omit<Carrier, "id">;
-export type CreaterRecharge = Omit<Recharge, "id">;
 export type CreateUser = Omit<User, "id">; 
 
 export type Phone = {
@@ -12,9 +11,9 @@ export type Phone = {
 }
 
 export type Carrier = {
-id: number,
-name: string,
-code: number
+    id: number,
+    name: string,
+    code: number
 }
 
 export type User = {
@@ -22,6 +21,10 @@ export type User = {
     document: string,
     name: string;
     phones: Phone[]
+}
+export type CreaterRecharge = { 
+    phone_id: number,
+    amount: number
 }
 
 export type Recharge = {
