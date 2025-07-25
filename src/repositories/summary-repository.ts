@@ -18,7 +18,7 @@ async function findUserByDocument(document:string) {
             WHERE p.user_id = $1
         `,[user.id])
         
-    return { user, phoneRows: phoneResult.rows }
+    return { document: user.document, phones: phoneResult.rows }
 }
 
 const summaryRepository = {

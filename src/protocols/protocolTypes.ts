@@ -50,6 +50,7 @@ export type PhoneByDoc = {
 export type SummaryPhone = { 
     id: number,
     phone_number: string,
+    user_id: number,
     description: string,
     carrier_id: number,
     carrier_name: string,
