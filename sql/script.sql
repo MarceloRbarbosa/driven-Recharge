@@ -31,5 +31,5 @@ id SERIAL PRIMARY KEY,
 phone_id INT NOT NULL,
 amount DECIMAL(10, 2) NOT NULL,
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-FOREIGN KEY (phone_id) REFERENCES phones(id),
+FOREIGN KEY (phone_id) REFERENCES phones(id)
 )
