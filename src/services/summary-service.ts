@@ -1,8 +1,8 @@
 import summaryRepository from "../repositories/summary-repository";
 
 async function getUserSummaryByDoc(document:string) {
-    const result = await summaryRepository.findUserByDocument(document)
-    if(!result){
+    const result = await summaryRepository.findUserByDocument(document) 
+    if(!result.user){
         throw { type: "NOT_FOUND", message: "Usuário não cadastrado"}
     }
 
@@ -35,7 +35,7 @@ async function getUserSummaryByDoc(document:string) {
 
 }
 return {
-    document: result.document, phones:phoneFormatted
+    document: result.user.document, phones:phoneFormatted
 }
 }
 const summaryService = {

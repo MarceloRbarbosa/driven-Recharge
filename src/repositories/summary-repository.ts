@@ -1,4 +1,4 @@
-import { SummaryPhone, User, Recharge } from "protocols/protocolTypes";
+import { SummaryPhone, User } from "protocols/protocolTypes";
 import connection from "../config/database";
 
 async function findUserByDocument(document:string) {
@@ -6,7 +6,9 @@ async function findUserByDocument(document:string) {
         `SELECT * FROM users WHERE document = $1
         `,[document]);
     const user = userResult.rows[0] || null
+   if (!user) return { user: null, phones: [] };
    
+
     const phoneResult = await connection.query<SummaryPhone>(`
             SELECT 
             p.id, p.phone_number as phone_number, p.user_id as user_id, p.description as description,
@@ -18,7 +20,7 @@ async function findUserByDocument(document:string) {
             WHERE p.user_id = $1
         `,[user.id])
         
-    return { document: user.document, phones: phoneResult.rows }
+    return {user, phones: phoneResult.rows }
 }
 
 const summaryRepository = {
