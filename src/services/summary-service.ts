@@ -3,11 +3,12 @@ import summaryRepository from "../repositories/summary-repository";
 async function getUserSummaryByDoc(document:string) {
     const result = await summaryRepository.findUserByDocument(document) 
     if(!result.user){
-        throw { type: "NOT_FOUND", message: "Usuário não cadastrado"}
+        throw { 
+            type: "NOT_FOUND", 
+            message: "Usuário não cadastrado"}
     }
 
     const phoneFormatted: any[]= [];
-
     for( const row of result.phones) {
         let phone = phoneFormatted.find(p => p.id === row.id);
 

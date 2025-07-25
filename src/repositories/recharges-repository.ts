@@ -8,7 +8,7 @@ async function CreaterNewRecharge(rechargeData:CreaterRecharge) {
         VALUES ($1, $2)
         RETURNING *
         `,[phone_id, amount])
-        return result.rows[0]
+    return result.rows[0]
 }
 
 async function findAllRecharge() {
@@ -20,7 +20,7 @@ async function findRechargeById(id:number) {
     const recharge = await connection.query<Recharge>(`
         SELECT * FROM recharge WHERE id= $1
         `,[id])
-        return recharge.rows[0]
+    return recharge.rows[0]
 }
 
 async function findRechargeByPhone(phone_number: string) {
@@ -30,8 +30,7 @@ async function findRechargeByPhone(phone_number: string) {
         JOIN phones ON phones.id = recharge.phone_id 
         WHERE phone_number = $1
         `,[phone_number])
-        console.log(recharge.rows)
-        return recharge.rows
+    return recharge.rows
 }
 
 const rechargeRepository = {

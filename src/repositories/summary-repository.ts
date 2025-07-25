@@ -6,7 +6,7 @@ async function findUserByDocument(document:string) {
         `SELECT * FROM users WHERE document = $1
         `,[document]);
     const user = userResult.rows[0] || null
-   if (!user) return { user: null, phones: [] };
+    if (!user) return { user: null, phones: [] };
    
 
     const phoneResult = await connection.query<SummaryPhone>(`

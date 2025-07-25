@@ -28,14 +28,14 @@ async function findUserByDocument(document:String) {
     const user = await connection.query<User>(`
         SELECT * FROM users WHERE document = $1
         `, [document])
-        return user.rows[0];
+    return user.rows[0];
 }
 
 async function findUserById(id:number) {
     const user = await connection.query<User>(`
         SELECT * FROM users WHERE id = $1
         `,[id])
-        return user.rows[0]
+    return user.rows[0]
 }
 
 

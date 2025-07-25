@@ -9,7 +9,6 @@ INSERT INTO carriers (name, code) VALUES ('Tim', 41);
 INSERT INTO carriers (name, code) VALUES ('Oi', 31);
 INSERT INTO carriers (name, code) VALUES ('Claro', 21);
 
-
 CREATE TABLE users (
 id SERIAL PRIMARY KEY,
 document TEXT NOT NULL UNIQUE,
