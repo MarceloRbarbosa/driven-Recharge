@@ -33,7 +33,6 @@ async function getPhoneByDocumentService(documentData:string) {
         throw { type: "NOT_FOUND", message: "Usuário não cadastrado"}
     }
     const phoneResult = await phoneRepository.findPhoneByDoc(documentData);
-     
      return phoneResult
 }
 

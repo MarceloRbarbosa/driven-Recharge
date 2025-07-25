@@ -11,8 +11,8 @@ async function insertNewRecharge(req:Request, res:Response) {
 }
 
 async function findRechargeByNumber(req:Request, res:Response) {
-    const  phone_number  = req.params.number
-    const recharges = await rechargeService.getRechargeByPhone(phone_number)
+    const  phoneNumber  = req.params.number
+    const recharges = await rechargeService.getRechargeByPhone(phoneNumber)
     res.send(recharges)  
 }
 

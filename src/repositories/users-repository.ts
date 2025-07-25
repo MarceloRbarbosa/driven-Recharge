@@ -43,7 +43,7 @@ const userRepository = {
     createNewUser,
     findAllUsers,
     findUserByDocument,
-    findUserById
+    findUserById,
 }
 
 export default userRepository;

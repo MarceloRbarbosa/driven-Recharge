@@ -19,7 +19,7 @@ export type Carrier = {
 export type User = {
     id: number,
     document: string,
-    name: string;
+    name: string,
     phones: Phone[]
 }
 export type CreaterRecharge = { 
@@ -47,6 +47,20 @@ export type PhoneByDoc = {
     number: Text
 }
 
+export type SummaryPhone = { 
+    id: number,
+    phone_number: string,
+    description: string,
+    carrier_id: number,
+    carrier_name: string,
+    carrier_code: number,
+    recharge_id:number,
+    amount:number,
+    date: Date,
+}
+
 export type CustomError = {
     type?: string;
 }
+
+
