@@ -18,7 +18,7 @@ async function createPhoneService(newPhone:CreatePhone) {
   if (phoneDDD !== String(carrier.code)) {
     throw {
       type: "conflict",
-      message: `O DDD do número (${phoneDDD}) não corresponde ao da operadora ${carrier.name} (DDD ${carrier.code})`,
+      message: `O DDD do número (${phoneDDD}) não corresponde ao da operadora ${carrier.name} (DDD ${carrier.code}).`,
     };
   }
 

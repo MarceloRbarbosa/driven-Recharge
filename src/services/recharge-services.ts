@@ -14,12 +14,12 @@ async function createRechargeService(rechargeData:CreaterRecharge) {
 }  
 
 async function getRechargeByPhone(phone_number:string) {
-    const recharge = await rechargeRepository.findRechargeByPhone(phone_number);
-    
-    if(!recharge){
+    const phone = await phoneRepository.findPhoneByNumber(phone_number)
+    if(!phone){
         throw { type: "NOT_FOUND", message: "Telefone não cadastrado"}
     }
-
+    
+    const recharge = await rechargeRepository.findRechargeByPhone(phone_number);
     return recharge
 }
 
