@@ -1,11 +1,26 @@
 import { CreatePhone } from "../protocols/protocolTypes";
 import phoneRepository from "../repositories/phones-repository";
 import userRepository from "../repositories/users-repository";
+import carriersRepository from "../repositories/carriers-repository";
 
 
 async function createPhoneService(newPhone:CreatePhone) {
     const conflict = await phoneRepository.findPhoneByNumber(newPhone.phone_number);
      if(conflict){ throw { type: "conflict", message: "Este número de telefone já existe"}}
+
+     const carriers = await carriersRepository.findAllcarriers()
+     const carrier = carriers.find(c => c.id === newPhone.carrier_id)
+     if (!carrier) {
+     throw { type: "conflict", message: "Operadora não encontrada" };
+    }
+
+    const phoneDDD = newPhone.phone_number.slice(0, 2);
+  if (phoneDDD !== String(carrier.code)) {
+    throw {
+      type: "conflict",
+      message: `O DDD do número (${phoneDDD}) não corresponde ao da operadora ${carrier.name} (DDD ${carrier.code})`,
+    };
+  }
 
    const users = await userRepository.findAllUsers();
    const user = users.find(u => u.id === Number(newPhone.user_id));
