@@ -1,4 +1,4 @@
-import { CreatePhone, CreatePhoneWithUser } from "../protocols/protocolTypes";
+import { CreatePhoneWithUser } from "../protocols/protocolTypes";
 import phoneRepository from "../repositories/phones-repository";
 import userRepository from "../repositories/users-repository";
 import carriersRepository from "../repositories/carriers-repository";

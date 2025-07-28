@@ -1,5 +1,5 @@
 import joi from "joi";
-import { CreatePhone, CreatePhoneWithUser } from "protocols/protocolTypes";
+import { CreatePhoneWithUser } from "protocols/protocolTypes";
 
 const phoneSchema = joi.object<CreatePhoneWithUser>({
     phone_number: joi.string().length(11).pattern(/^\d+$/).required(),

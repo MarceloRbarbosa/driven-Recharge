@@ -1,6 +1,6 @@
 import  httpStatus  from "http-status";
 import { Request, Response } from "express";
-import { CreatePhone, CreatePhoneWithUser } from "../protocols/protocolTypes";
+import { CreatePhoneWithUser } from "../protocols/protocolTypes";
 import phonesService from "../services/phones-services";
 
 async function insertNewPhone(req:Request, res: Response) {
@@ -15,8 +15,14 @@ async function getPhonesByDocument(req:Request, res: Response) {
     res.send(phones)
 }
 
+async function getAllPhones(req: Request, res:Response) {
+    const phones = await phonesService.getPhoneService();
+    res.send(phones)
+}
+
 const phoneControllers = {
     insertNewPhone,
+    getAllPhones,
     getPhonesByDocument
 }
 
