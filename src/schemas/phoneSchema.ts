@@ -3,7 +3,7 @@ import { CreatePhoneWithUser } from "protocols/protocolTypes";
 
 const phoneSchema = joi.object<CreatePhoneWithUser>({
     phone_number: joi.string().length(11).pattern(/^\d+$/).required(),
-    carrier_id: joi.number().integer().required(),
+    carrier: joi.string().required(),
     name: joi.string().required(),
     description: joi.string().required()
 });

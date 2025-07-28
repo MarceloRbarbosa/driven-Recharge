@@ -26,7 +26,7 @@ async function createPhoneService(newPhone:CreatePhoneWithUser) {
     }
 
      const carriers = await carriersRepository.findAllcarriers()
-     const carrier = carriers.find(c => c.id === newPhone.carrier_id)
+     const carrier = carriers.find(c => c.name.toLocaleLowerCase() === newPhone.carrier.toLocaleLowerCase())
      if (!carrier) {
         throw { 
             type: "conflict", 
@@ -43,6 +43,7 @@ async function createPhoneService(newPhone:CreatePhoneWithUser) {
 
     
    newPhone.user_id = user.id;
+   newPhone.carrier_id = carrier.id
    await phoneRepository.insertNewPhone(newPhone)
 }
 

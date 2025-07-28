@@ -65,4 +65,8 @@ export type CustomError = {
     type?: string;
 }
 
-export type CreatePhoneWithUser = CreatePhone & { user_id: number, name: string}
+export type CreatePhoneWithUser = CreatePhone & {
+     user_id: number, 
+     name: string, 
+     carrier:string
+    }
