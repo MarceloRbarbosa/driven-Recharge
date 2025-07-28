@@ -1,3 +1,5 @@
+import { number } from "joi";
+
 export type CreatePhone = Omit<Phone, "id">;
 export type CreateUser = Omit<User, "id">; 
 
@@ -63,4 +65,4 @@ export type CustomError = {
     type?: string;
 }
 
-
+export type CreatePhoneWithUser = CreatePhone & { user_id: number, name: string}

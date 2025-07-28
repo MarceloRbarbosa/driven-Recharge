@@ -24,6 +24,21 @@ async function findAllUsers() {
     return users
 }
 
+async function findUserByName(name:string) {
+    const result = await connection.query<User>(`
+        SELECT * FROM users WHERE name = $1`
+        ,[name]);
+    
+    const user = result.rows[0]
+    if (user) {
+        const phonesResult = await connection.query<Phone>(`
+            SELECT * FROM phones WHERE user_id = $1
+        `, [user.id]);
+    user.phones = phonesResult.rows
+}
+return user;
+}
+
 async function findUserByDocument(document:String) {
     const user = await connection.query<User>(`
         SELECT * FROM users WHERE document = $1
@@ -42,6 +57,7 @@ async function findUserById(id:number) {
 const userRepository = {
     createNewUser,
     findAllUsers,
+    findUserByName,
     findUserByDocument,
     findUserById,
 }
