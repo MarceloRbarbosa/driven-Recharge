@@ -53,13 +53,12 @@ async function findUserById(id:number) {
     return user.rows[0]
 }
 
-
 const userRepository = {
     createNewUser,
     findAllUsers,
     findUserByName,
     findUserByDocument,
-    findUserById,
+    findUserById
 }
 
 export default userRepository;

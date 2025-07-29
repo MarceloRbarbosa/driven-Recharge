@@ -1,4 +1,4 @@
-//USERS 
+
 export type CreateUser = Omit<User, "id">;
 export type User = {
     id: number,
@@ -7,7 +7,6 @@ export type User = {
     phones: Phone[]
 }
 
-// PHONES
 export type CreatePhone = Omit<Phone, "id">;
 export type Phone = {
     id: number,
@@ -28,7 +27,6 @@ export type CreatePhoneWithUser = CreatePhone & {
     carrier:string
 }
 
-//CARRIERS
 export type CreateCarrier = Omit<Carrier, "id">;
 export type Carrier = {
     id: number,
@@ -36,8 +34,6 @@ export type Carrier = {
     code: number
 }
 
-
-//RECHARGES
 export type CreaterRecharge = { 
     phone_id: number,
     amount: number
@@ -55,7 +51,6 @@ export type RechargeByNumber = {
     date: Date;
 }
 
-//SUMMARY
 export type SummaryPhone = { 
     id: number,
     phone_number: string,
@@ -69,7 +64,6 @@ export type SummaryPhone = {
     date: Date,
 }
 
-//ERROR
 export type CustomError = {
     type?: string;
 }

@@ -49,7 +49,7 @@ async function updateCarrier(carrierData:Carrier) {
 }
 
 async function deleteCarrier(id:number) {
-    const carrier = await connection.query<Carrier>(`
+    await connection.query<Carrier>(`
         DELETE FROM carriers WHERE id = $1
         `,[id])
 }
