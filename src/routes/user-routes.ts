@@ -6,7 +6,7 @@ import userSchema from "../schemas/user-schema";
 
 const userRouter = Router ();
 
-userRouter.post("/user",validateSchema(userSchema),userControllers.createNewUser)
+userRouter.post("/users",validateSchema(userSchema),userControllers.createNewUser)
 
 
 export default userRouter;
