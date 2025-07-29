@@ -1,4 +1,3 @@
-import { number } from "joi";
 
 export type CreatePhone = Omit<Phone, "id">;
 export type CreateUser = Omit<User, "id">; 
