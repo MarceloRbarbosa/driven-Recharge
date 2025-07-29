@@ -47,6 +47,14 @@ async function updateCarrierService(carrierData:Carrier) {
             message: "Esta operadora não existe"
         }
 }
+
+    const conflict = await carriersRepository.findCarrierByCode(carrierData.code)
+    if(conflict){
+        throw {
+            type: "conflict",
+            message: "Esse codigo já está sendo utilizado em outra operadora"
+        }
+    }
     await carriersRepository.updateCarrier(carrierData)
 }
 

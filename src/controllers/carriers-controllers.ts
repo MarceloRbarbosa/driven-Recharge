@@ -24,7 +24,7 @@ async function getCarrierById(req:Request, res: Response) {
 async function updateCarrier(req:Request, res: Response) {
     const carrierUpdated = req.body as Carrier
     const carrierId = parseInt(req.params.id, 10)
-    carrierUpdated.id = carrierId;
+    carrierUpdated.id = carrierId
 
     await carriersServices.updateCarrierService(carrierUpdated)
     res.status(httpStatus.OK).send({message:"Operadora atualizada", carrier: carrierUpdated})

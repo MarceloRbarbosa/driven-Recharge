@@ -9,4 +9,5 @@ phoneRouter.post("/phones", validateSchema(phoneSchema),phoneControllers.insertN
 phoneRouter.get("/phones", phoneControllers.getAllPhones)
 phoneRouter.get("/phones/:document", phoneControllers.getPhonesByDocument);
 
+
 export default phoneRouter;

@@ -1,5 +1,5 @@
 import connection from "../config/database";
-import { Phone, CreatePhone, PhoneByDoc } from "../protocols/protocolTypes";
+import { Phone, CreatePhone, PhoneByDoc, CreatePhoneWithUser } from "../protocols/protocolTypes";
 
 async function insertNewPhone(phoneData:CreatePhone) {
     const {phone_number, carrier_id, user_id, description} = phoneData;
@@ -40,6 +40,17 @@ async function findPhoneByDoc(doc:string) {
     return phone.rows;
 }
 
+async function updatePhone(phoneData:Phone) {
+    const {phone_number, carrier_id, user_id, description, id} = phoneData
+    const result = await connection.query<Phone>(`
+        UPDATE phones 
+        SET phone_number = $1, carrier_id = $2, user_id = $3, description = $4
+        WHERE id = $5
+        RETURNING *
+        `,[phone_number, carrier_id, user_id, description, id])
+        return result.rows[0]; 
+}
+
 async function deletePhoneNumber(id:number) {
     await connection.query<Phone>(`DELETE FROM phones WHERE id =$1`,[id])
 }
@@ -50,6 +61,7 @@ const phoneRepository = {
     findPhonesById,
     findPhoneByNumber,
     findPhoneByDoc,
+    updatePhone,
     deletePhoneNumber
 }
 
