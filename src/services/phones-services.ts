@@ -22,7 +22,7 @@ async function createPhoneService(newPhone:CreatePhoneWithUser) {
      if(conflict){ 
         throw { 
             type: "conflict", 
-            message: "Este número de telefone já existe"}
+            message: "Este número de telefone já está sendo utilizado"}
     }
 
      const carriers = await carriersRepository.findAllcarriers()
