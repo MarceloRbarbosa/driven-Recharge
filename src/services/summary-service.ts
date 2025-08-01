@@ -27,12 +27,13 @@ async function getUserSummaryByDoc(document:string) {
     };
     phoneFormatted.push(phone)
     }
-
-    phone.recharges.push({
+    if(row.recharge_id){
+        phone.recharges.push({
         id:row.recharge_id,
         amount:row.amount,
         date:row.date
-    });
+    }); 
+    }
 
 }
 return {

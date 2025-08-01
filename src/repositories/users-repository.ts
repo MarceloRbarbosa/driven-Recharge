@@ -40,10 +40,18 @@ return user;
 }
 
 async function findUserByDocument(document:String) {
-    const user = await connection.query<User>(`
+    const result = await connection.query<User>(`
         SELECT * FROM users WHERE document = $1
         `, [document])
-    return user.rows[0];
+    const user = result.rows[0];
+
+    if(user) { 
+        const phonesResult = await connection.query(`
+            SELECT * FROM phones WHERE user_id = $1
+            `,[user.id])
+            user.phones = phonesResult.rows
+    }
+    return user;
 }
 
 async function findUserById(id:number) {

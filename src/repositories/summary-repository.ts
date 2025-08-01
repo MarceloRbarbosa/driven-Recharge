@@ -16,7 +16,7 @@ async function findUserByDocument(document:string) {
             r.id as recharge_id, r.amount as amount, r.created_at as date
             FROM phones as p
             JOIN carriers as c ON p.carrier_id = c.id
-            JOIN recharge as r ON r.phone_id = p.id
+            LEFT JOIN recharge as r ON r.phone_id = p.id
             WHERE p.user_id = $1
         `,[user.id])
         

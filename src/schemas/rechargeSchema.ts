@@ -1,4 +1,4 @@
-import joi, { number } from "joi";
+import joi from "joi";
 import { CreaterRecharge } from "protocols/protocolTypes";
 
 const rechargeSchema = joi.object<CreaterRecharge>({

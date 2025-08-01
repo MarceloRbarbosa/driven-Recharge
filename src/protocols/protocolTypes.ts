@@ -1,5 +1,5 @@
 
-export type CreateUser = Omit<User, "id">;
+export type CreateUser = Omit<User, "id" | "phones">;
 export type User = {
     id: number,
     document: string,
@@ -21,9 +21,9 @@ export type PhoneByDoc = {
     document: string,
     number: Text
 }
-export type CreatePhoneWithUser = CreatePhone & {
-    user_id: number, 
-    name: string, 
+export type CreatePhoneWithUser = CreatePhone & { 
+    name: string,
+    document: string,
     carrier:string
 }
 
