@@ -15,14 +15,8 @@ async function getPhonesByDocument(req:Request, res: Response) {
     res.send(phones)
 }
 
-// async function getAllPhones(req: Request, res:Response) {
-//     const phones = await phonesService.getPhoneService();
-//     res.send(phones)
-// }
-
 const phoneControllers = {
     insertNewPhone,
-    // getAllPhones,
     getPhonesByDocument
 }
 

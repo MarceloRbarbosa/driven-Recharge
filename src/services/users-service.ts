@@ -17,7 +17,6 @@ async function getUserByDocService(document:string) {
 }
 
 const userServices = {
-    // createNewUserService,
     getUsersService,
     getUserByDocService
 }

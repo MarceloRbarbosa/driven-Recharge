@@ -1,4 +1,4 @@
-import { CreatePhoneWithUser, Phone } from "../protocols/protocolTypes";
+import { CreatePhoneWithUser} from "../protocols/protocolTypes";
 import phoneRepository from "../repositories/phones-repository";
 import userRepository from "../repositories/users-repository";
 import carriersRepository from "../repositories/carriers-repository";
@@ -46,18 +46,11 @@ async function createPhoneService(newPhone:CreatePhoneWithUser) {
                 };
             }
             
-        
-        
                 newPhone.user_id = user.id;
                 newPhone.carrier_id = carrier.id
                 await phoneRepository.insertNewPhone(newPhone)
             }
             
-// async function getPhoneService() {
-//     const phones = await phoneRepository.findAllPhones()
-//     return phones
-// }
-
 async function getPhoneByDocumentService(documentData:string) {
 
     await userRepository.findUserByDocument(documentData)
@@ -65,36 +58,9 @@ async function getPhoneByDocumentService(documentData:string) {
      return phoneResult
 }
 
-// async function updatePhoneService(phoneData:Phone) {
-    
-//      const phone = await phoneRepository.findPhonesById(phoneData.id)
-//     if(!phone){ 
-//         throw {
-//             type: "NOT_FOUND",
-//             message: "Este telefone não existe"
-//         }
-// }
-
-//     await phoneRepository.updatePhone(phoneData)
-// }
-// async function deletePhoneService(id:number) {
-//    const phone = await phoneRepository.findPhonesById(id)
-//     if(!phone) {
-//         throw { 
-//             type: "not_found", 
-//             message: "Este telefone não existe"}
-//     }
-
-//     await phoneRepository.deletePhoneNumber(id);
-// }
-
-
 const phonesService = {
     createPhoneService,
-    // getPhoneService,
     getPhoneByDocumentService,
-    // updatePhoneService,
-    // deletePhoneService
 }
 
 export default phonesService;
